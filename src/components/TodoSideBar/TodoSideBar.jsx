@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GoPrimitiveDot } from 'react-icons/go';
+import { database } from '../../firebase';
+import { ProjectsTask } from './ProjectsTask/ProjectsTask';
 
 const projects_task = [
     [
@@ -37,13 +39,26 @@ const projects_task = [
     ],
 ];
 
+export const TodoSideBar = ({ isOpen }) => {
+    return (
+        <SideBar isOpen={isOpen}>
+            <TaskContainer>
+                {projects_task.map((project) => {
+                    <ProjectsTask project={project} />;
+                })}
+            </TaskContainer>
+        </SideBar>
+    );
+};
+
 const SideBar = styled.div`
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
     height: 100%;
     flex-grow: 2;
     background-color: #f1f0f0;
-    display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 0.7s ease-in-out;
 `;
 
 const TaskContainer = styled.div`
@@ -64,16 +79,3 @@ const TaskTitle = styled.div`
     justify-content: center;
     align-items: center;
 `;
-export const TodoSideBar = () => {
-    return (
-        <SideBar>
-            <TaskContainer>
-                <TaskTitle>
-                    <GoPrimitiveDot color={'#af4e4e'} margin={'20px 20px'} />
-                    <p>Structural Engineer</p>
-                </TaskTitle>
-                <span>2</span>
-            </TaskContainer>
-        </SideBar>
-    );
-};

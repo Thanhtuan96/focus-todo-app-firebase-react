@@ -8,12 +8,13 @@ import {
 } from './AppTitle.styles';
 import { AiOutlineMenu } from 'react-icons/ai';
 
-export const AppTitle = () => {
+export const AppTitle = ({ isOpen, setIsOpen }) => {
+    console.log(isOpen);
     return (
         <Container>
             <ToggleBtn
                 onClick={() => {
-                    alert('you clicked me...!');
+                    setIsOpen((isOpen) => !isOpen);
                 }}
             >
                 <AiOutlineMenu color='black' />

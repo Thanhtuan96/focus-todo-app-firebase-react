@@ -1,8 +1,9 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AppTitle } from './components/AppTitle/AppTitle';
 import { TodoContent } from './components/TodoContent/TodoContent';
 import { TodoSideBar } from './components/TodoSideBar/TodoSideBar';
+
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
@@ -28,12 +29,13 @@ const DemoContent = styled.div`
 `;
 
 function App() {
-    const [isFold, setIsFold] = useState('false');
+    const [isOpen, setIsOpen] = useState(true);
+
     return (
         <div className='App'>
-            <AppTitle />
+            <AppTitle isOpen={isOpen} setIsOpen={setIsOpen} />
             <AppContainer>
-                <TodoSideBar>2323</TodoSideBar>
+                <TodoSideBar isOpen={isOpen}>2323</TodoSideBar>
                 <TodoContent>232323</TodoContent>
             </AppContainer>
         </div>
