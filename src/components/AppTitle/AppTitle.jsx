@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-    Container,
-    Header,
-    CTAButton,
-    UserIcon,
-    ToggleBtn,
-} from './AppTitle.styles';
+import { Container, Header, UserIcon, ToggleBtn } from './AppTitle.styles';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 export const AppTitle = ({ isOpen, setIsOpen }) => {
-    console.log(isOpen);
     return (
         <Container>
             <ToggleBtn

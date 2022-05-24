@@ -17,41 +17,33 @@ const AppContainer = styled.div`
     align-items: center;
 `;
 
-// const DemoSideBar = styled.div`
-//     height: 100%;
-//     flex-grow: 2;
-//     background-color: white;
-//     border-right: 0.5px solid gray;
-// `;
-
-const DemoContent = styled.div`
-    height: 100%;
-    flex-grow: 8;
-    background-color: white;
-`;
 
 function App() {
     const [isOpen, setIsOpen] = useState(true);
-    const [users, setUsers] = useState([]);
+    const [projects, setProjects] = useState([]);
 
-    const usersCollectionRef = collection(database, 'messages');
+    const usersCollectionRef = collection(database, 'projects');
 
     useEffect(() => {
-        const getUsers = async () => {
+        const getProjects = async () => {
             const data = await getDocs(usersCollectionRef);
-            console.log(
+            setProjects(
                 data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
             );
         };
 
-        getUsers();
+        getProjects();
     }, []);
+
+    console.log(projects);
 
     return (
         <div className='App'>
             <AppTitle isOpen={isOpen} setIsOpen={setIsOpen} />
             <AppContainer>
-                <TodoSideBar isOpen={isOpen}>2323</TodoSideBar>
+                <TodoSideBar isOpen={isOpen} projects={projects}>
+                    2323
+                </TodoSideBar>
                 <TodoContent>232323</TodoContent>
             </AppContainer>
         </div>
