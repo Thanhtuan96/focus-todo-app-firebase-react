@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { AppTitle } from './components/AppTitle/AppTitle';
 import { TodoContent } from './components/TodoContent/TodoContent';
 import { TodoSideBar } from './components/TodoSideBar/TodoSideBar';
+import { database } from './firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 import styled from 'styled-components';
 
@@ -30,6 +32,20 @@ const DemoContent = styled.div`
 
 function App() {
     const [isOpen, setIsOpen] = useState(true);
+    const [users, setUsers] = useState([]);
+
+    const usersCollectionRef = collection(database, 'messages');
+
+    useEffect(() => {
+        const getUsers = async () => {
+            const data = await getDocs(usersCollectionRef);
+            console.log(
+                data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+            );
+        };
+
+        getUsers();
+    }, []);
 
     return (
         <div className='App'>
