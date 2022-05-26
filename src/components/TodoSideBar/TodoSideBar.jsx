@@ -5,7 +5,7 @@ export const TodoSideBar = ({ isOpen, projects }) => {
     return (
         <SideBar isOpen={isOpen}>
             {projects.map((project) => {
-                return <ProjectsTask project={project} />;
+                return <ProjectsTask key={project.id} project={project} />;
             })}
         </SideBar>
     );
