@@ -8,5 +8,11 @@ const ContentContainer = styled.div`
 `;
 
 export const TodoContent = () => {
-    return <ContentContainer>TodoContent</ContentContainer>;
+    return (
+        <ContentContainer>
+            <div>
+                <h1>Hello</h1>
+            </div>
+        </ContentContainer>
+    );
 };
