@@ -4,6 +4,7 @@ import { AppTitle } from './components/AppTitle/AppTitle';
 import { TodoContent } from './components/TodoContent/TodoContent';
 import { TodoSideBar } from './components/TodoSideBar/TodoSideBar';
 import { useProjects } from './utils/Hooks/useProjects';
+import { useTasks } from './utils/Hooks/useTasks';
 
 import styled from 'styled-components';
 
@@ -20,6 +21,9 @@ function App() {
     const [isOpen, setIsOpen] = useState(true);
 
     const projects = useProjects();
+    const tasks = useTasks();
+
+    console.log([projects, tasks]);
 
     return (
         <div className='App'>
